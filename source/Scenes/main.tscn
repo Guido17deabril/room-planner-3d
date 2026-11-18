@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://58nks6mo16dm"]
+
+[ext_resource type="Script" uid="uid://u0usxcadseq2" path="res://Scripts/RoomBuilder.cs" id="1_8gbba"]
+[ext_resource type="Script" uid="uid://bykfpu0adte7r" path="res://Scripts/CameraController.cs" id="2_jjvhh"]
+[ext_resource type="Script" uid="uid://bxdndnrnjrdh0" path="res://Scripts/FurnitureController.cs" id="3_kry3j"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/UIManager.tscn" id="4_uimanager"]
+
+[sub_resource type="Environment" id="env_001"]
+background_mode = 2
+background_color = Color(0.15, 0.15, 0.18, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.9, 0.87, 0.82, 1)
+ambient_light_energy = 0.4
+
+[node name="Main" type="Node3D" unique_id=623117264]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=111111001]
+environment = SubResource("env_001")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=355796590]
+transform = Transform3D(0.866, -0.354, 0.354, 0, 0.707, 0.707, -0.5, -0.612, 0.612, 0, 8, 0)
+light_color = Color(1, 0.97, 0.9, 1)
+light_energy = 1.2
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=111111002]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25, 2.0, 3.0)
+light_color = Color(0.8, 0.85, 1.0, 1)
+light_energy = 0.3
+omni_range = 12.0
+
+[node name="RoomNode" type="Node3D" parent="." unique_id=231152859]
+script = ExtResource("1_8gbba")
+RoomWidth = 4.5
+RoomLength = 6.0
+RoomHeight = 2.6
+WallThickness = 0.15
+FloorColor = Color(0.784, 0.722, 0.604, 1)
+WallNorthColor = Color(0.91, 0.863, 0.784, 1)
+WallSouthColor = Color(0.91, 0.863, 0.784, 1)
+WallEastColor = Color(0.831, 0.773, 0.682, 1)
+WallWestColor = Color(0.227, 0.486, 0.647, 1)
+
+[node name="CameraPivot" type="Node3D" parent="." unique_id=980838525]
+
+[node name="Camera3D" type="Camera3D" parent="CameraPivot" unique_id=1807491852]
+script = ExtResource("2_jjvhh")
+ZoomMin = 2.0
+ZoomMax = 20.0
+ZoomSpeed = 1.5
+ZoomSmoothness = 8.0
+OrbitSpeed = 0.25
+PitchMin = -80.0
+PitchMax = -5.0
+PivotOffset = Vector3(2.25, 0.0, 3.0)
+
+[node name="FurnitureRoot" type="Node3D" parent="." unique_id=390022473]
+script = ExtResource("3_kry3j")
+CameraPath = NodePath("../CameraPivot/Camera3D")
+GridSize = 0.1
+DragPlaneY = 0.0
+ColorNormal = Color(0.7, 0.5, 0.3, 1)
+ColorSelected = Color(0.2, 0.7, 1.0, 1)
+ColorCollision = Color(1.0, 0.2, 0.2, 1)
+
+[node name="UIManager" parent="." instance=ExtResource("4_uimanager")]

@@ -1,0 +1,96 @@
+; IAOptimizerButton.tscn — Botón flotante de IA Auto-Layout
+; Posicionado en esquina inferior central, con animación de breathe
+
+[gd_scene format=3 uid="uid://iabutton_ui_001"]
+
+[ext_resource type="Script" path="res://Scripts/UI/IAOptimizerController.cs" id="1_iabutton"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_container"]
+bg_color = Color(0.0, 0.0, 0.0, 0.0)
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_main"]
+bg_color = Color(0.18, 0.52, 0.89, 0.96)
+border_width_top = 1
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.40, 0.70, 1.0, 0.9)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_left = 14
+corner_radius_bottom_right = 14
+shadow_color = Color(0.10, 0.30, 0.65, 0.50)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+content_margin_left = 18.0
+content_margin_right = 18.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.22, 0.60, 1.0, 0.99)
+border_width_top = 1
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.55, 0.80, 1.0, 1.0)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_left = 14
+corner_radius_bottom_right = 14
+shadow_color = Color(0.10, 0.35, 0.75, 0.65)
+shadow_size = 12
+shadow_offset = Vector2(0, 4)
+content_margin_left = 18.0
+content_margin_right = 18.0
+content_margin_top = 12.0
+content_margin_bottom = 12.0
+
+[node name="IAOptimizerButton" type="PanelContainer" unique_id="iabutton_root"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -110.0
+offset_top = -90.0
+offset_right = 110.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_iabutton")
+theme_override_styles/panel = SubResource("StyleBoxFlat_container")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 4
+
+[node name="MainButton" type="Button" parent="VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(200, 0)
+text = "✨ Optimizar Espacio (IA)"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_main")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+
+[node name="StatusLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Optimizar Espacio (IA)"
+theme_override_colors/font_color = Color(0.65, 0.75, 0.95, 1)
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+visible = false
+
+[node name="ScoreLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Ergonomía: 0/100"
+theme_override_colors/font_color = Color(0.45, 0.95, 0.65, 1)
+theme_override_font_sizes/font_size = 11
+horizontal_alignment = 1
+visible = false

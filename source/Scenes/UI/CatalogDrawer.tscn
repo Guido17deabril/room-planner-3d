@@ -1,0 +1,88 @@
+; CatalogDrawer.tscn — Panel retráctil izquierdo con catálogo de muebles
+; Drawer lateral con TabContainer por categorías y botones de spawn
+
+[gd_scene format=3 uid="uid://catalog_ui_001"]
+
+[ext_resource type="Script" path="res://Scripts/UI/CatalogController.cs" id="1_catalog"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.09, 0.09, 0.12, 0.93)
+border_width_right = 1
+border_color = Color(0.25, 0.25, 0.38, 0.8)
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+content_margin_left = 0.0
+content_margin_right = 0.0
+content_margin_top = 0.0
+content_margin_bottom = 0.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toggle"]
+bg_color = Color(0.15, 0.18, 0.30, 0.95)
+border_width_right = 1
+border_color = Color(0.35, 0.40, 0.65, 0.8)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+content_margin_left = 6.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_furniture_btn"]
+bg_color = Color(0.14, 0.14, 0.20, 0.9)
+border_width_top = 1
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.28, 0.28, 0.42, 0.7)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[node name="CatalogDrawer" type="PanelContainer" unique_id="catalog_root"]
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_top = 44.0
+offset_right = 215.0
+grow_horizontal = 1
+grow_vertical = 2
+script = ExtResource("1_catalog")
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="HBoxOuter" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContent" type="VBoxContainer" parent="HBoxOuter"]
+layout_mode = 2
+size_flags_horizontal = 3
+custom_minimum_size = Vector2(190, 0)
+
+[node name="CatalogHeader" type="Label" parent="HBoxOuter/PanelContent"]
+layout_mode = 2
+text = "📦 Catálogo"
+theme_override_colors/font_color = Color(0.85, 0.85, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+horizontal_alignment = 1
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 6
+
+[node name="TabContainer" type="TabContainer" parent="HBoxOuter/PanelContent"]
+layout_mode = 2
+size_flags_vertical = 3
+tab_alignment = 0
+theme_override_font_sizes/font_size = 11
+
+[node name="ToggleButton" type="Button" parent="HBoxOuter"]
+layout_mode = 2
+custom_minimum_size = Vector2(20, 0)
+text = "◀"
+theme_override_styles/normal = SubResource("StyleBoxFlat_toggle")
+theme_override_colors/font_color = Color(0.7, 0.8, 1.0, 1)
+theme_override_font_sizes/font_size = 12

@@ -1,0 +1,468 @@
+; InspectorPanel.tscn — Panel inspector lateral derecho
+; TabContainer con 3 tabs: Habitación, Materiales, Mueble seleccionado
+
+[gd_scene format=3 uid="uid://inspector_ui_001"]
+
+[ext_resource type="Script" path="res://Scripts/UI/InspectorController.cs" id="1_inspector"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.09, 0.09, 0.12, 0.93)
+border_width_left = 1
+border_color = Color(0.25, 0.25, 0.38, 0.8)
+corner_radius_top_left = 10
+corner_radius_bottom_left = 10
+content_margin_left = 2.0
+content_margin_right = 2.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_section"]
+bg_color = Color(0.12, 0.12, 0.18, 0.85)
+border_width_top = 1
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.22, 0.22, 0.35, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_apply"]
+bg_color = Color(0.20, 0.52, 0.85, 0.95)
+border_width_top = 1
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.65, 1.0, 0.9)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_left = 7
+corner_radius_bottom_right = 7
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_danger"]
+bg_color = Color(0.75, 0.18, 0.18, 0.90)
+border_width_top = 1
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1.0, 0.35, 0.35, 0.8)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_left = 7
+corner_radius_bottom_right = 7
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_warning"]
+bg_color = Color(0.70, 0.30, 0.05, 0.85)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_left = 5
+corner_radius_bottom_right = 5
+content_margin_left = 8.0
+content_margin_right = 8.0
+content_margin_top = 4.0
+content_margin_bottom = 4.0
+
+[node name="InspectorPanel" type="PanelContainer" unique_id="inspector_root"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = 44.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("1_inspector")
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 2
+tab_alignment = 0
+theme_override_font_sizes/font_size = 11
+
+; ─────────────────────────────────────────────────────────────────────────────
+; TAB 0: Habitación
+; ─────────────────────────────────────────────────────────────────────────────
+
+[node name="Habitacion" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="TabContainer/Habitacion"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="LabelRoom" type="Label" parent="TabContainer/Habitacion/VBox"]
+layout_mode = 2
+text = "📐 Dimensiones"
+theme_override_colors/font_color = Color(0.75, 0.80, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="WidthLabel" type="Label" parent="TabContainer/Habitacion/VBox"]
+layout_mode = 2
+text = "Ancho (m)"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="WidthHBox" type="HBoxContainer" parent="TabContainer/Habitacion/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="WidthSlider" type="HSlider" parent="TabContainer/Habitacion/VBox/WidthHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 2.0
+max_value = 20.0
+step = 0.1
+value = 4.5
+
+[node name="WidthSpin" type="SpinBox" parent="TabContainer/Habitacion/VBox/WidthHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(85, 0)
+min_value = 2.0
+max_value = 20.0
+step = 0.1
+value = 4.5
+suffix = "m"
+theme_override_font_sizes/font_size = 12
+
+[node name="LengthLabel" type="Label" parent="TabContainer/Habitacion/VBox"]
+layout_mode = 2
+text = "Largo (m)"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="LengthHBox" type="HBoxContainer" parent="TabContainer/Habitacion/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LengthSlider" type="HSlider" parent="TabContainer/Habitacion/VBox/LengthHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 2.0
+max_value = 20.0
+step = 0.1
+value = 6.0
+
+[node name="LengthSpin" type="SpinBox" parent="TabContainer/Habitacion/VBox/LengthHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(85, 0)
+min_value = 2.0
+max_value = 20.0
+step = 0.1
+value = 6.0
+suffix = "m"
+theme_override_font_sizes/font_size = 12
+
+[node name="HeightLabel" type="Label" parent="TabContainer/Habitacion/VBox"]
+layout_mode = 2
+text = "Alto (m)"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="HeightHBox" type="HBoxContainer" parent="TabContainer/Habitacion/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HeightSlider" type="HSlider" parent="TabContainer/Habitacion/VBox/HeightHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 2.0
+max_value = 5.0
+step = 0.1
+value = 2.6
+
+[node name="HeightSpin" type="SpinBox" parent="TabContainer/Habitacion/VBox/HeightHBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(85, 0)
+min_value = 2.0
+max_value = 5.0
+step = 0.1
+value = 2.6
+suffix = "m"
+theme_override_font_sizes/font_size = 12
+
+[node name="ApplyButton" type="Button" parent="TabContainer/Habitacion/VBox"]
+layout_mode = 2
+text = "✔ Aplicar Dimensiones"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_apply")
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+; ─────────────────────────────────────────────────────────────────────────────
+; TAB 1: Materiales
+; ─────────────────────────────────────────────────────────────────────────────
+
+[node name="Materiales" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="TabContainer/Materiales"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="LabelMat" type="Label" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+text = "🎨 Colores de Superficies"
+theme_override_colors/font_color = Color(0.75, 0.80, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="FloorLabel" type="Label" parent="TabContainer/Materiales/VBox"]
+text = "Suelo"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="FloorColorPicker" type="ColorPickerButton" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 32)
+color = Color(0.784, 0.722, 0.604, 1)
+edit_alpha = false
+
+[node name="WallNorthLabel" type="Label" parent="TabContainer/Materiales/VBox"]
+text = "Pared Norte"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="WallNorthColorPicker" type="ColorPickerButton" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 32)
+color = Color(0.91, 0.863, 0.784, 1)
+edit_alpha = false
+
+[node name="WallSouthLabel" type="Label" parent="TabContainer/Materiales/VBox"]
+text = "Pared Sur"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="WallSouthColorPicker" type="ColorPickerButton" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 32)
+color = Color(0.91, 0.863, 0.784, 1)
+edit_alpha = false
+
+[node name="WallEastLabel" type="Label" parent="TabContainer/Materiales/VBox"]
+text = "Pared Este"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="WallEastColorPicker" type="ColorPickerButton" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 32)
+color = Color(0.831, 0.773, 0.682, 1)
+edit_alpha = false
+
+[node name="WallWestLabel" type="Label" parent="TabContainer/Materiales/VBox"]
+text = "Pared Oeste"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="WallWestColorPicker" type="ColorPickerButton" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 32)
+color = Color(0.227, 0.486, 0.647, 1)
+edit_alpha = false
+
+[node name="HarmonySeparator" type="HSeparator" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.28, 0.28, 0.42, 0.6)
+
+[node name="HarmonyLabel" type="Label" parent="TabContainer/Materiales/VBox"]
+text = "✨ Armonía Cromática"
+theme_override_colors/font_color = Color(0.75, 0.80, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="HarmonyModeOption" type="OptionButton" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+
+[node name="HarmonyButton" type="Button" parent="TabContainer/Materiales/VBox"]
+layout_mode = 2
+text = "🎨 Generar Paleta"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_apply")
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+; ─────────────────────────────────────────────────────────────────────────────
+; TAB 2: Mueble seleccionado
+; ─────────────────────────────────────────────────────────────────────────────
+
+[node name="Mueble" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="TabContainer/Mueble"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="NameLabel" type="Label" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "Sin selección"
+theme_override_colors/font_color = Color(0.85, 0.90, 1.0, 1)
+theme_override_font_sizes/font_size = 13
+autowrap_mode = 3
+
+[node name="PosLabel" type="Label" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "—"
+theme_override_colors/font_color = Color(0.55, 0.60, 0.75, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="RotLabel" type="Label" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "Rotar:"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="HBoxRot" type="HBoxContainer" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Rotate45Button" type="Button" parent="TabContainer/Mueble/VBox/HBoxRot"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "↻ +45°"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_apply")
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Rotate90Button" type="Button" parent="TabContainer/Mueble/VBox/HBoxRot"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "↻ +90°"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_apply")
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="FurnitureColorLabel" type="Label" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "Color del mueble:"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="FurnitureColorPicker" type="ColorPickerButton" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 32)
+color = Color(0.7, 0.5, 0.3, 1)
+edit_alpha = false
+
+[node name="DimSeparator" type="HSeparator" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.28, 0.28, 0.42, 0.6)
+
+[node name="DimLabel" type="Label" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "📐 Medidas Específicas:"
+theme_override_colors/font_color = Color(0.75, 0.80, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="GridDims" type="GridContainer" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 6
+
+[node name="FurnWidthLabel" type="Label" parent="TabContainer/Mueble/VBox/GridDims"]
+layout_mode = 2
+text = "Ancho:"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="FurnWidthSpin" type="SpinBox" parent="TabContainer/Mueble/VBox/GridDims"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.05
+max_value = 10.0
+step = 0.05
+value = 1.0
+suffix = "m"
+theme_override_font_sizes/font_size = 11
+
+[node name="FurnDepthLabel" type="Label" parent="TabContainer/Mueble/VBox/GridDims"]
+layout_mode = 2
+text = "Profundidad:"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="FurnDepthSpin" type="SpinBox" parent="TabContainer/Mueble/VBox/GridDims"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.05
+max_value = 10.0
+step = 0.05
+value = 1.0
+suffix = "m"
+theme_override_font_sizes/font_size = 11
+
+[node name="FurnHeightLabel" type="Label" parent="TabContainer/Mueble/VBox/GridDims"]
+layout_mode = 2
+text = "Alto:"
+theme_override_colors/font_color = Color(0.70, 0.70, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+
+[node name="FurnHeightSpin" type="SpinBox" parent="TabContainer/Mueble/VBox/GridDims"]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.05
+max_value = 10.0
+step = 0.05
+value = 1.0
+suffix = "m"
+theme_override_font_sizes/font_size = 11
+
+[node name="TextureSeparator" type="HSeparator" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.28, 0.28, 0.42, 0.6)
+
+[node name="TextureLabel" type="Label" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "🖼 Foto / Textura Real:"
+theme_override_colors/font_color = Color(0.75, 0.80, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="LoadTextureButton" type="Button" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "📂 Cargar Foto del Mueble..."
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_apply")
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="TextureStatusLabel" type="Label" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "Sin textura personalizada"
+theme_override_colors/font_color = Color(0.55, 0.60, 0.75, 1)
+theme_override_font_sizes/font_size = 10
+autowrap_mode = 3
+
+[node name="CollisionWarning" type="Label" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "⚠ Colisión detectada"
+theme_override_colors/font_color = Color(1.0, 0.75, 0.25, 1)
+theme_override_font_sizes/font_size = 11
+visible = false
+
+[node name="DeleteSeparator" type="HSeparator" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.45, 0.15, 0.15, 0.6)
+
+[node name="DeleteButton" type="Button" parent="TabContainer/Mueble/VBox"]
+layout_mode = 2
+text = "🗑 Eliminar Mueble"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_danger")
+theme_override_colors/font_color = Color(1.0, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 12

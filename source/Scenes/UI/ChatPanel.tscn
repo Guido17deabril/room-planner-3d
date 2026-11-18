@@ -1,0 +1,212 @@
+; ChatPanel.tscn — Asistente de IA conversacional integrado
+[gd_scene format=3 uid="uid://chatpanel_ui_001"]
+
+[ext_resource type="Script" path="res://Scripts/UI/ChatController.cs" id="1_chat"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toggle"]
+bg_color = Color(0.16, 0.45, 0.85, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.70, 1.0, 0.9)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_left = 16
+corner_radius_bottom_right = 16
+shadow_color = Color(0.08, 0.20, 0.45, 0.5)
+shadow_size = 6
+shadow_offset = Vector2(0, 2)
+content_margin_left = 14.0
+content_margin_right = 14.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_toggle_hover"]
+bg_color = Color(0.22, 0.55, 0.95, 1.0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.60, 0.85, 1.0, 1.0)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_left = 16
+corner_radius_bottom_right = 16
+shadow_color = Color(0.12, 0.30, 0.60, 0.6)
+shadow_size = 8
+shadow_offset = Vector2(0, 3)
+content_margin_left = 14.0
+content_margin_right = 14.0
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_window"]
+bg_color = Color(0.10, 0.11, 0.16, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.30, 0.35, 0.55, 0.75)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_left = 14
+corner_radius_bottom_right = 14
+shadow_color = Color(0.04, 0.05, 0.08, 0.6)
+shadow_size = 12
+shadow_offset = Vector2(0, 4)
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_send"]
+bg_color = Color(0.18, 0.48, 0.88, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.40, 0.65, 1.0, 0.8)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 8.0
+content_margin_right = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_icon"]
+bg_color = Color(0.15, 0.16, 0.24, 0.7)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_left = 5
+corner_radius_bottom_right = 5
+content_margin_left = 6.0
+content_margin_right = 6.0
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+
+[node name="ChatPanel" type="Control" unique_id="chatpanel_root"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -340.0
+offset_top = -430.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_chat")
+
+[node name="ToggleButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -46.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "💬 Asistente IA"
+theme_override_styles/normal = SubResource("StyleBoxFlat_toggle")
+theme_override_styles/hover = SubResource("StyleBoxFlat_toggle_hover")
+theme_override_colors/font_color = Color(0.95, 0.97, 1.0, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="ChatWindow" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_window")
+
+[node name="VBox" type="VBoxContainer" parent="ChatWindow"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Header" type="HBoxContainer" parent="ChatWindow/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Icon" type="Label" parent="ChatWindow/VBox/Header"]
+layout_mode = 2
+text = "🤖"
+theme_override_font_sizes/font_size = 14
+
+[node name="Title" type="Label" parent="ChatWindow/VBox/Header"]
+layout_mode = 2
+text = "Diseñador IA RoomPlanner"
+theme_override_colors/font_color = Color(0.85, 0.90, 1.0, 1.0)
+theme_override_font_sizes/font_size = 12
+
+[node name="Spacer" type="Control" parent="ChatWindow/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ClearButton" type="Button" parent="ChatWindow/VBox/Header"]
+layout_mode = 2
+text = "🗑"
+tooltip_text = "Limpiar conversación"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_icon")
+theme_override_font_sizes/font_size = 11
+
+[node name="CloseButton" type="Button" parent="ChatWindow/VBox/Header"]
+layout_mode = 2
+text = "✕"
+tooltip_text = "Minimizar asistente"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_icon")
+theme_override_font_sizes/font_size = 11
+
+[node name="HSeparator" type="HSeparator" parent="ChatWindow/VBox"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.25, 0.28, 0.42, 0.5)
+
+[node name="Scroll" type="ScrollContainer" parent="ChatWindow/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Messages" type="VBoxContainer" parent="ChatWindow/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ChipsScroll" type="ScrollContainer" parent="ChatWindow/VBox"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+vertical_scroll_mode = 0
+
+[node name="Chips" type="HBoxContainer" parent="ChatWindow/VBox/ChipsScroll"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="InputBar" type="HBoxContainer" parent="ChatWindow/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="LineEdit" type="LineEdit" parent="ChatWindow/VBox/InputBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Pide un mueble, ventana, aire o medidas..."
+theme_override_font_sizes/font_size = 11
+clear_button_enabled = true
+
+[node name="SendButton" type="Button" parent="ChatWindow/VBox/InputBar"]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+text = "➤"
+tooltip_text = "Enviar mensaje"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_send")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 12
+

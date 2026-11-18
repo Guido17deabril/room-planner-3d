@@ -1,0 +1,28 @@
+# Godot 4+ specific ignores
+.godot/
+*.translation
+
+# Godot-specific editor / export files
+.import/
+export.cfg
+export_presets.cfg
+
+# Mono / C# / .NET ignores
+.mono/
+[Bb]in/
+[Oo]bj/
+*.csproj.old
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+
+# IDE / Editor files
+.vs/
+.idea/
+.vscode/
+
+# OS specific files
+.DS_Store
+Thumbs.db
+desktop.ini

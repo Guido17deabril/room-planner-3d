@@ -1,0 +1,142 @@
+; TopBar.tscn — Barra superior con tema oscuro semi-transparente
+; Estructura: PanelContainer → HBoxContainer con labels y botones
+
+[gd_scene format=3 uid="uid://topbar_ui_001"]
+
+[ext_resource type="Script" path="res://Scripts/UI/TopBarController.cs" id="1_topbar"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topbar"]
+bg_color = Color(0.10, 0.10, 0.13, 0.92)
+border_width_bottom = 1
+border_color = Color(0.25, 0.25, 0.35, 0.8)
+corner_radius_top_left = 0
+corner_radius_top_right = 0
+corner_radius_bottom_left = 0
+corner_radius_bottom_right = 0
+content_margin_left = 12.0
+content_margin_right = 12.0
+content_margin_top = 6.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.18, 0.18, 0.24, 0.9)
+border_width_top = 1
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.35, 0.50, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.25, 0.28, 0.45, 0.95)
+border_width_top = 1
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.45, 0.50, 0.80, 0.9)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 10.0
+content_margin_right = 10.0
+content_margin_top = 5.0
+content_margin_bottom = 5.0
+
+[node name="TopBar" type="PanelContainer" unique_id="topbar_root"]
+anchors_preset = 10
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_bottom = 44.0
+grow_vertical = 1
+script = ExtResource("1_topbar")
+theme_override_styles/panel = SubResource("StyleBoxFlat_topbar")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+theme_override_constants/separation = 10
+
+[node name="AppIcon" type="Label" parent="HBox"]
+layout_mode = 2
+text = "🏠"
+theme_override_font_sizes/font_size = 20
+
+[node name="TitleLabel" type="Label" parent="HBox"]
+layout_mode = 2
+text = "RoomPlanner 3D"
+theme_override_colors/font_color = Color(0.92, 0.92, 1.0, 1)
+theme_override_font_sizes/font_size = 14
+
+[node name="Separator1" type="VSeparator" parent="HBox"]
+layout_mode = 2
+theme_override_colors/separator_color = Color(0.3, 0.3, 0.4, 0.6)
+
+[node name="DimensionsLabel" type="Label" parent="HBox"]
+layout_mode = 2
+text = "4.5m × 6.0m × 2.6m"
+theme_override_colors/font_color = Color(0.65, 0.75, 0.95, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="Spacer" type="Control" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CameraModeOption" type="OptionButton" parent="HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_colors/font_color = Color(0.85, 0.90, 1.0, 1)
+tooltip_text = "Modo de cámara"
+
+[node name="ViewToggleButton" type="Button" parent="HBox"]
+layout_mode = 2
+text = "🎥 Vista 3D"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_colors/font_color = Color(0.85, 0.90, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+
+[node name="UndoButton" type="Button" parent="HBox"]
+layout_mode = 2
+text = "↩ Deshacer"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_colors/font_color = Color(0.90, 0.85, 1.0, 1)
+theme_override_font_sizes/font_size = 12
+tooltip_text = "Deshacer última acción"
+
+[node name="SaveButton" type="Button" parent="HBox"]
+layout_mode = 2
+text = "💾 Guardar"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_colors/font_color = Color(0.70, 0.95, 0.70, 1)
+theme_override_font_sizes/font_size = 12
+tooltip_text = "Guardar layout como JSON"
+
+[node name="LoadButton" type="Button" parent="HBox"]
+layout_mode = 2
+text = "📂 Cargar"
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+theme_override_colors/font_color = Color(0.95, 0.85, 0.55, 1)
+theme_override_font_sizes/font_size = 12
+tooltip_text = "Cargar layout desde JSON"
+
+[node name="SaveConfirmLabel" type="Label" parent="HBox"]
+layout_mode = 2
+text = "✓ Guardado"
+theme_override_colors/font_color = Color(0.40, 0.95, 0.55, 1)
+theme_override_font_sizes/font_size = 11
+visible = false

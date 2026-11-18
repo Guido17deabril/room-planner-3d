@@ -1,0 +1,33 @@
+; UIManager.tscn — CanvasLayer raíz que orquesta todos los subpaneles UI
+; Se instancia como hijo de Main (Node3D) en main.tscn
+
+[gd_scene format=3 uid="uid://uimanager_ui_001"]
+
+[ext_resource type="Script"  path="res://Scripts/UI/UIManager.cs"         id="1_uimanager"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/TopBar.tscn"          id="2_topbar"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/CatalogDrawer.tscn"   id="3_catalog"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/InspectorPanel.tscn"  id="4_inspector"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/IAOptimizerButton.tscn" id="5_iabutton"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/ChatPanel.tscn"         id="6_chatpanel"]
+
+[node name="UIManager" type="CanvasLayer" unique_id="uimanager_root"]
+layer = 10
+script = ExtResource("1_uimanager")
+RoomBuilderPath    = NodePath("../RoomNode")
+FurnitureRootPath  = NodePath("../FurnitureRoot")
+CameraPath         = NodePath("../CameraPivot/Camera3D")
+TopBarPath         = NodePath("TopBar")
+CatalogDrawerPath  = NodePath("CatalogDrawer")
+InspectorPanelPath = NodePath("InspectorPanel")
+IAButtonPath       = NodePath("IAOptimizerButton")
+ChatPanelPath      = NodePath("ChatPanel")
+
+[node name="TopBar" parent="." instance=ExtResource("2_topbar")]
+
+[node name="CatalogDrawer" parent="." instance=ExtResource("3_catalog")]
+
+[node name="InspectorPanel" parent="." instance=ExtResource("4_inspector")]
+
+[node name="IAOptimizerButton" parent="." instance=ExtResource("5_iabutton")]
+
+[node name="ChatPanel" parent="." instance=ExtResource("6_chatpanel")]

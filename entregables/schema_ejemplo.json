@@ -1,0 +1,148 @@
+{
+  "version": "1.0",
+  "name": "Dormitorio Principal",
+  "lastModified": "2026-10-29T16:00:00-03:00",
+  "checksum": "",
+  "room": {
+    "width": 4.5,
+    "length": 6.0,
+    "height": 2.6,
+    "wallThickness": 0.15
+  },
+  "palette": {
+    "dominant": "#E8DCC8",
+    "secondary": "#7A6652",
+    "accent": "#3A7CA5",
+    "style": "contemporary"
+  },
+  "surfaces": {
+    "floor": {
+      "color": "#C8B89A",
+      "material": "hardwood_oak"
+    },
+    "wallNorth": {
+      "color": "#E8DCC8",
+      "material": "matte_paint"
+    },
+    "wallSouth": {
+      "color": "#E8DCC8",
+      "material": "matte_paint"
+    },
+    "wallEast": {
+      "color": "#D4C5AE",
+      "material": "matte_paint"
+    },
+    "wallWest": {
+      "color": "#3A7CA5",
+      "material": "matte_paint",
+      "isAccentWall": true
+    }
+  },
+  "accessPoints": [
+    {
+      "id": "door_main",
+      "type": "door",
+      "wall": "south",
+      "positionAlongWall": 0.9,
+      "width": 0.9,
+      "height": 2.1,
+      "clearanceRequired": 0.9
+    },
+    {
+      "id": "window_east_1",
+      "type": "window",
+      "wall": "east",
+      "positionAlongWall": 1.5,
+      "width": 1.2,
+      "height": 1.0,
+      "sillHeight": 0.9,
+      "clearanceRequired": 0.7
+    }
+  ],
+  "furniture": [
+    {
+      "id": "bed_double_001",
+      "type": "bed_double",
+      "label": "Cama matrimonial",
+      "dimensions": { "width": 1.6, "depth": 2.0, "height": 0.55 },
+      "position": { "x": 1.55, "y": 0.0, "z": 0.8 },
+      "rotation": 0,
+      "color": "#7A6652",
+      "material": "fabric_linen",
+      "anchoredWall": "north",
+      "ergonomicScore": 92
+    },
+    {
+      "id": "nightstand_left_001",
+      "type": "nightstand",
+      "label": "Mesa de noche izquierda",
+      "dimensions": { "width": 0.45, "depth": 0.40, "height": 0.55 },
+      "position": { "x": 0.55, "y": 0.0, "z": 0.95 },
+      "rotation": 0,
+      "color": "#9B8570",
+      "material": "wood_walnut",
+      "anchoredWall": null,
+      "ergonomicScore": 88
+    },
+    {
+      "id": "nightstand_right_001",
+      "type": "nightstand",
+      "label": "Mesa de noche derecha",
+      "dimensions": { "width": 0.45, "depth": 0.40, "height": 0.55 },
+      "position": { "x": 2.75, "y": 0.0, "z": 0.95 },
+      "rotation": 0,
+      "color": "#9B8570",
+      "material": "wood_walnut",
+      "anchoredWall": null,
+      "ergonomicScore": 88
+    },
+    {
+      "id": "wardrobe_001",
+      "type": "wardrobe",
+      "label": "Armario empotrado",
+      "dimensions": { "width": 2.4, "depth": 0.60, "height": 2.2 },
+      "position": { "x": 1.05, "y": 0.0, "z": 5.55 },
+      "rotation": 180,
+      "color": "#E8DCC8",
+      "material": "laminate_white",
+      "anchoredWall": "south",
+      "ergonomicScore": 95
+    },
+    {
+      "id": "desk_001",
+      "type": "desk",
+      "label": "Escritorio de trabajo",
+      "dimensions": { "width": 1.4, "depth": 0.65, "height": 0.75 },
+      "position": { "x": 3.65, "y": 0.0, "z": 1.5 },
+      "rotation": 270,
+      "color": "#7A6652",
+      "material": "wood_walnut",
+      "anchoredWall": "east",
+      "ergonomicScore": 85
+    },
+    {
+      "id": "chair_desk_001",
+      "type": "chair_office",
+      "label": "Silla de escritorio",
+      "dimensions": { "width": 0.60, "depth": 0.60, "height": 1.0 },
+      "position": { "x": 2.95, "y": 0.0, "z": 1.5 },
+      "rotation": 90,
+      "color": "#3A7CA5",
+      "material": "fabric_mesh",
+      "anchoredWall": null,
+      "ergonomicScore": 90
+    }
+  ],
+  "layoutMetrics": {
+    "overallErgonomicScore": 89,
+    "circulationClearance": {
+      "minPassageway": 0.72,
+      "allAccessClear": true,
+      "criticalPoints": []
+    },
+    "furnitureCount": 6,
+    "occupiedArea": 8.42,
+    "freeCirculationArea": 18.58,
+    "occupancyRatio": 0.312
+  }
+}
